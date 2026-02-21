@@ -1,10 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="font-geist">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Job Tracker</title>
-
+    <title>Job Application Tracker</title>
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- tailwind css daisy UI -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5"
@@ -12,11 +19,110 @@
       type="text/css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- <style type="text/tailwindcss">
+    <style type="text/tailwindcss">
+      @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+      @import "tailwindcss";
       @theme {
-        --color-clifford: #da373d;
+        --font-geist: "Geist", sans-serif;
       }
-    </style> -->
+    </style>
   </head>
-  <body></body>
+  <body>
+    <!-- header section -->
+    <header class="border-b-2 sm:border-b-3 border-black/10">
+      <div class="p-3 sm:w-10/12 mx-auto">
+        <h1 class="font-bold text-2xl sm:text-3xl leading-8 text-[#002C5C]">
+          Job Application Tracker
+        </h1>
+        <div class="grid grid-cols-3 mt-2">
+          <div class="px-3 font-medium text-[14px] leading-4.25">
+            Total
+            <p
+              class="text-[#002C5C] font-bold text-2xl leading-7.25"
+              id="total-count"
+            >
+              0
+            </p>
+          </div>
+          <div class="px-3 font-medium text-[14px] leading-4.25">
+            Interview
+            <p
+              class="text-green-400 font-bold text-2xl leading-7.25"
+              id="inerview-count"
+            >
+              0
+            </p>
+          </div>
+          <div class="px-3 font-medium text-[14px] leading-4.25">
+            Rejected
+            <p
+              class="text-red-400 font-bold text-2xl leading-7.25"
+              id="rejected-count"
+            >
+              0
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- main section -->
+    <main class="p-4 sm:w-10/12 mx-auto">
+      <!-- header -->
+      <div class="flex justify-between">
+        <h2 class="text-[#002C5C]">Available Jobs</h2>
+        <p class="text-black/50 font-medium">8 jobs</p>
+      </div>
+      <!-- toggle buttons -->
+      <div class="flex gap-3 mt-6">
+        <button class="btn bg-[#3B82F6] text-white px-7">All</button>
+        <button class="btn px-7 text-black/50">Interview</button>
+        <button class="btn px-7 text-black/50">Rejected</button>
+      </div>
+      <!-- cards container -->
+      <section class="mt-4 sm:p-6 flex justify-between">
+        <!-- left side -->
+        <div class="job-card space-y-1.5">
+          <h3
+            class="job-company-name text-[#002C5C] font-semibold text-lg leading-6.5"
+          >
+            Mobile First Corp
+            <p class="job-position text-black/40 text-base font-normal">
+              React Native Developer
+            </p>
+          </h3>
+          <p class="job-details text-black/40 text-[14px]">
+            <span class="job-location">Remote</span> •
+            <span class="job-type">Full-time</span> •
+            <span class="job-salary">$130,000 - $175,000</span>
+          </p>
+          <div
+            class="job-status rounded font-medium text-[14px] text-[#002C5C] leading-5"
+          >
+            Not Applied
+          </div>
+          <p class="job-description text-[14px]/5 text-[#323B49] text-justify">
+            Build enterprise applications with JavaScript and modern frameworks.
+            We offer competitive compensation, health insurance, and
+            professional development opportunities.
+          </p>
+          <!-- buttons -->
+          <div class="flex gap-3 mt-3">
+            <button class="btn btn-outline btn-success uppercase">
+              interview
+            </button>
+            <button class="btn btn-outline btn-error uppercase">
+              Rejected
+            </button>
+          </div>
+        </div>
+
+        <!-- right side -->
+        <div class="flex shrink-0 justify-end">
+          <span class="btn btn-circle text-black/60">
+            <i class="fa-regular fa-trash-can"></i>
+          </span>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
