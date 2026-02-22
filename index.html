@@ -51,7 +51,7 @@
             Interview
             <p
               class="text-green-400 font-bold text-2xl leading-7.25"
-              id="inerview-count"
+              id="interview-count"
             >
               0
             </p>
@@ -77,9 +77,15 @@
       </div>
       <!-- toggle buttons -->
       <div class="flex gap-3 mt-6" id="toggle-buttons">
-        <button class="btn text-black/50 px-7 button-active">All</button>
-        <button class="btn px-7 text-black/50">Interview</button>
-        <button class="btn px-7 text-black/50">Rejected</button>
+        <button data-id="all" class="btn text-black/50 px-7 button-active">
+          All
+        </button>
+        <button data-id="interview" class="btn px-7 text-black/50">
+          Interview
+        </button>
+        <button data-id="rejected" class="btn px-7 text-black/50">
+          Rejected
+        </button>
       </div>
 
       <!-- Filtered cards -->
@@ -98,14 +104,12 @@
             <p class="job-position text-black/40 text-[14px] -mt-2">
               React Native Developer
             </p>
-            <p class="job-details text-black/40 text-[14px]">
+            <p class="text-black/40 text-[14px]">
               <span class="job-location">Remote</span> •
               <span class="job-type">Full-time</span> •
               <span class="job-salary">$130,000 - $175,000</span>
             </p>
-            <div
-              class="job-status rounded font-medium text-[14px] text-[#002C5C] leading-5"
-            >
+            <div class="job-status badge badge-neutral font-medium uppercase">
               Not Applied
             </div>
             <p
