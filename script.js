@@ -9,6 +9,8 @@ const filteredCardEle = document.getElementById("filtered-card");
 const totalCount = document.getElementById("total-count");
 const interviewCount = document.getElementById("interview-count");
 const rejectedCount = document.getElementById("rejected-count");
+const availableJobs = document.getElementById("available-jobs");
+let activeTab = "all";
 
 // toggle functionality
 document.getElementById("toggle-buttons").addEventListener("click", (e) => {
@@ -25,15 +27,21 @@ document.getElementById("toggle-buttons").addEventListener("click", (e) => {
     if (buttonEle.dataset.id === "all") {
       filteredCardEle.classList.add("hidden");
       allCardSectionEle.classList.remove("hidden");
+      activeTab = "all";
     } else {
       allCardSectionEle.classList.add("hidden");
       filteredCardEle.classList.remove("hidden");
 
       // render cards
-      buttonEle.dataset.id === "interview"
-        ? cardRenders(interviewList)
-        : cardRenders(rejectedList);
+      if (buttonEle.dataset.id === "interview") {
+        activeTab = "interview";
+        cardRenders(interviewList);
+      } else {
+        activeTab = "rejected";
+        cardRenders(rejectedList);
+      }
     }
+    jobsCount();
   }
 });
 
@@ -41,7 +49,7 @@ document.getElementById("toggle-buttons").addEventListener("click", (e) => {
 function cardStateUpdate(e) {
   const targetEle = e.target;
   const cardEle = e.target.parentElement.parentElement;
-
+  let activeTab = "all";
   // card info
   const companyName = cardEle.querySelector(".job-company-name").textContent;
   const position = cardEle.querySelector(".job-position").textContent;
@@ -78,6 +86,7 @@ function cardStateUpdate(e) {
     rejectedList = rejectedList.filter((item) => {
       item.companyName !== cardInfo.companyName;
     });
+    cardRenders(rejectedList);
   }
   // add card data to rejectedList
   else if (targetEle.classList.contains("rejected-btn")) {
@@ -96,6 +105,7 @@ function cardStateUpdate(e) {
     interviewList = interviewList.filter((item) => {
       item.companyName !== cardInfo.companyName;
     });
+    cardRenders(interviewList);
   }
   // update jobs counter
   jobsCount();
@@ -108,12 +118,25 @@ function jobsCount() {
   totalCount.textContent = allCardSectionEle.children.length;
   interviewCount.textContent = interviewList.length;
   rejectedCount.textContent = rejectedList.length;
+  availableJobs.textContent =
+    activeTab === "interview"
+      ? `${interviewList.length} of jobs`
+      : activeTab === "rejected"
+        ? `${interviewList.length} of jobs`
+        : allCardSectionEle.children.length;
 }
 jobsCount();
 
 // render cards
 function cardRenders(cardList) {
   filteredCardEle.innerHTML = "";
+
+  // if cardList empty show blank ui
+  if (cardList.length === 0) {
+    emptyRenderer();
+    return;
+  }
+
   cardList.forEach((item) => {
     const div = document.createElement("div");
     div.className = "mt-4 space-y-4";
@@ -166,4 +189,23 @@ function cardRenders(cardList) {
 
     filteredCardEle.appendChild(div);
   });
+}
+
+// empty renderer
+function emptyRenderer() {
+  const div = document.createElement("div");
+  div.className = "flex justify-center items-center px-10 py-15";
+  div.innerHTML = `
+   <!-- document icon  -->
+          <div class="flex flex-col items-center justify-center">
+            <img src="./page.png" alt="it's present empty" />
+            <p class="font-semibold mt-5 text-2xl/8 text-[#002C5C]">
+              No jobs available
+            </p>
+            <p class="text-black/50">
+              Check back soon for new job opportunities
+            </p>
+          </div>
+  `;
+  filteredCardEle.appendChild(div);
 }
