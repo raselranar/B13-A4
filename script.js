@@ -1,5 +1,5 @@
-const interviewList = [];
-const rejectedList = [];
+let interviewList = [];
+let rejectedList = [];
 
 // element select
 const allCardSectionEle = document.getElementById("allCard");
@@ -38,7 +38,7 @@ document.getElementById("toggle-buttons").addEventListener("click", (e) => {
 });
 
 // update interviewList and rejectedList by clicking buttons
-allCardSectionEle.addEventListener("click", (e) => {
+function cardStateUpdate(e) {
   const targetEle = e.target;
   const cardEle = e.target.parentElement.parentElement;
 
@@ -74,7 +74,13 @@ allCardSectionEle.addEventListener("click", (e) => {
       cardInfo.status = "interview";
       interviewList.push(cardInfo);
     }
-  } else if (targetEle.classList.contains("rejected-btn")) {
+    // remove interview status card info
+    rejectedList = rejectedList.filter((item) => {
+      item.companyName !== cardInfo.companyName;
+    });
+  }
+  // add card data to rejectedList
+  else if (targetEle.classList.contains("rejected-btn")) {
     const jobExist = rejectedList.find(
       (item) => item.companyName === cardInfo.companyName,
     );
@@ -86,10 +92,16 @@ allCardSectionEle.addEventListener("click", (e) => {
       cardInfo.status = "Rejected";
       rejectedList.push(cardInfo);
     }
+    // rejected card info
+    interviewList = interviewList.filter((item) => {
+      item.companyName !== cardInfo.companyName;
+    });
   }
   // update jobs counter
   jobsCount();
-});
+}
+allCardSectionEle.addEventListener("click", cardStateUpdate);
+filteredCardEle.addEventListener("click", cardStateUpdate);
 
 // jobs count
 function jobsCount() {
