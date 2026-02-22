@@ -19,11 +19,14 @@
       type="text/css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style type="text/tailwindcss">
+    <style>
       @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
-      @import "tailwindcss";
-      @theme {
-        --font-geist: "Geist", sans-serif;
+      .font-geist {
+        font-family: "Geist", sans-serif;
+      }
+      .button-active {
+        background-color: #3b82f6;
+        color: white;
       }
     </style>
   </head>
@@ -73,56 +76,63 @@
         <p class="text-black/50 font-medium">8 jobs</p>
       </div>
       <!-- toggle buttons -->
-      <div class="flex gap-3 mt-6">
-        <button class="btn bg-[#3B82F6] text-white px-7">All</button>
+      <div class="flex gap-3 mt-6" id="toggle-buttons">
+        <button class="btn text-black/50 px-7 button-active">All</button>
         <button class="btn px-7 text-black/50">Interview</button>
         <button class="btn px-7 text-black/50">Rejected</button>
       </div>
       <!-- cards container -->
-      <section class="mt-4 sm:p-6 flex justify-between">
-        <!-- left side -->
-        <div class="job-card space-y-1.5">
-          <h3
-            class="job-company-name text-[#002C5C] font-semibold text-lg leading-6.5"
-          >
-            Mobile First Corp
-            <p class="job-position text-black/40 text-base font-normal">
-              React Native Developer
+      <section class="mt-4">
+        <div class="sm:p-6 flex justify-between">
+          <!-- left side -->
+          <div class="job-card space-y-1.5">
+            <h3
+              class="job-company-name text-[#002C5C] font-semibold text-lg leading-6.5"
+            >
+              Mobile First Corp
+              <p class="job-position text-black/40 text-base font-normal">
+                React Native Developer
+              </p>
+            </h3>
+            <p class="job-details text-black/40 text-[14px]">
+              <span class="job-location">Remote</span> •
+              <span class="job-type">Full-time</span> •
+              <span class="job-salary">$130,000 - $175,000</span>
             </p>
-          </h3>
-          <p class="job-details text-black/40 text-[14px]">
-            <span class="job-location">Remote</span> •
-            <span class="job-type">Full-time</span> •
-            <span class="job-salary">$130,000 - $175,000</span>
-          </p>
-          <div
-            class="job-status rounded font-medium text-[14px] text-[#002C5C] leading-5"
-          >
-            Not Applied
+            <div
+              class="job-status rounded font-medium text-[14px] text-[#002C5C] leading-5"
+            >
+              Not Applied
+            </div>
+            <p
+              class="job-description text-[14px]/5 text-[#323B49] text-justify"
+            >
+              Build enterprise applications with JavaScript and modern
+              frameworks. We offer competitive compensation, health insurance,
+              and professional development opportunities.
+            </p>
+            <!-- buttons -->
+            <div class="flex gap-3 mt-3">
+              <button
+                class="interview-btn btn btn-outline btn-success uppercase"
+              >
+                interview
+              </button>
+              <button class="rejected-btn btn btn-outline btn-error uppercase">
+                Rejected
+              </button>
+            </div>
           </div>
-          <p class="job-description text-[14px]/5 text-[#323B49] text-justify">
-            Build enterprise applications with JavaScript and modern frameworks.
-            We offer competitive compensation, health insurance, and
-            professional development opportunities.
-          </p>
-          <!-- buttons -->
-          <div class="flex gap-3 mt-3">
-            <button class="btn btn-outline btn-success uppercase">
-              interview
-            </button>
-            <button class="btn btn-outline btn-error uppercase">
-              Rejected
-            </button>
-          </div>
-        </div>
 
-        <!-- right side -->
-        <div class="flex shrink-0 justify-end">
-          <span class="btn btn-circle text-black/60">
-            <i class="fa-regular fa-trash-can"></i>
-          </span>
+          <!-- right side -->
+          <div class="flex shrink-0 justify-end">
+            <span class="btn btn-circle text-black/60">
+              <i class="fa-regular fa-trash-can"></i>
+            </span>
+          </div>
         </div>
       </section>
     </main>
   </body>
+  <script src="./script.js"></script>
 </html>
