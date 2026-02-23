@@ -51,14 +51,18 @@ function cardStateUpdate(e) {
   const cardEle = e.target.parentElement.parentElement;
   let activeTab = "all";
   // card info
-  const companyName = cardEle.querySelector(".job-company-name").textContent;
-  const position = cardEle.querySelector(".job-position").textContent;
-  const salary = cardEle.querySelector(".job-salary").textContent;
-  const location = cardEle.querySelector(".job-location").textContent;
-  const type = cardEle.querySelector(".job-type").textContent;
+  const companyName = cardEle
+    .querySelector(".job-company-name")
+    .textContent.trim();
+  const position = cardEle.querySelector(".job-position").textContent.trim();
+  const salary = cardEle.querySelector(".job-salary").textContent.trim();
+  const location = cardEle.querySelector(".job-location").textContent.trim();
+  const type = cardEle.querySelector(".job-type").textContent.trim();
   const statusEle = cardEle.querySelector(".job-status");
-  const status = statusEle.textContent;
-  const description = cardEle.querySelector(".job-description").textContent;
+  const status = statusEle.textContent.trim();
+  const description = cardEle
+    .querySelector(".job-description")
+    .textContent.trim();
 
   const cardInfo = {
     companyName,
@@ -83,9 +87,9 @@ function cardStateUpdate(e) {
       interviewList.push(cardInfo);
     }
     // remove interview status card info
-    rejectedList = rejectedList.filter((item) => {
-      item.companyName !== cardInfo.companyName;
-    });
+    rejectedList = rejectedList.filter(
+      (item) => item.companyName !== cardInfo.companyName,
+    );
     cardRenders(rejectedList);
   }
   // add card data to rejectedList
@@ -102,9 +106,9 @@ function cardStateUpdate(e) {
       rejectedList.push(cardInfo);
     }
     // rejected card info
-    interviewList = interviewList.filter((item) => {
-      item.companyName !== cardInfo.companyName;
-    });
+    interviewList = interviewList.filter(
+      (item) => item.companyName !== cardInfo.companyName,
+    );
     cardRenders(interviewList);
   }
   // update jobs counter
@@ -115,14 +119,15 @@ filteredCardEle.addEventListener("click", cardStateUpdate);
 
 // jobs count
 function jobsCount() {
-  totalCount.textContent = allCardSectionEle.children.length;
+  const allCardLength = allCardSectionEle.children.length;
+  totalCount.textContent = allCardLength;
   interviewCount.textContent = interviewList.length;
   rejectedCount.textContent = rejectedList.length;
   availableJobs.textContent =
     activeTab === "interview"
-      ? `${interviewList.length} of jobs`
+      ? `${interviewList.length} of ${allCardLength} jobs`
       : activeTab === "rejected"
-        ? `${interviewList.length} of jobs`
+        ? `${rejectedList.length} of ${allCardLength} jobs`
         : allCardSectionEle.children.length;
 }
 jobsCount();
@@ -194,10 +199,10 @@ function cardRenders(cardList) {
 // empty renderer
 function emptyRenderer() {
   const div = document.createElement("div");
-  div.className = "flex justify-center items-center px-10 py-15";
+  div.className = "flex justify-center flex-col items-center py-15";
   div.innerHTML = `
    <!-- document icon  -->
-          <div class="flex flex-col items-center justify-center">
+          <!--div class="flex flex-col items-center justify-center"-->
             <img src="./page.png" alt="it's present empty" />
             <p class="font-semibold mt-5 text-2xl/8 text-[#002C5C]">
               No jobs available
@@ -205,7 +210,7 @@ function emptyRenderer() {
             <p class="text-black/50">
               Check back soon for new job opportunities
             </p>
-          </div>
+          <!--/div-->
   `;
   filteredCardEle.appendChild(div);
 }
