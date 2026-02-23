@@ -49,7 +49,14 @@ document.getElementById("toggle-buttons").addEventListener("click", (e) => {
 function cardStateUpdate(e) {
   const targetEle = e.target;
   const cardEle = e.target.parentElement.parentElement;
-  let activeTab = "all";
+
+  if (targetEle.closest(".delete-btn")) {
+    removeCard(targetEle.closest(".job-card"));
+  }
+  // check clicked on button or not
+  if (targetEle.tagName !== "BUTTON") {
+    return;
+  }
   // card info
   const companyName = cardEle
     .querySelector(".job-company-name")
@@ -74,7 +81,10 @@ function cardStateUpdate(e) {
     description,
   };
   // add card data to interviewList
-  if (targetEle.classList.contains("interview-btn")) {
+  if (
+    targetEle.classList.contains("interview-btn") &&
+    activeTab !== "interview"
+  ) {
     const jobExist = interviewList.find(
       (item) => item.companyName === cardInfo.companyName,
     );
@@ -128,14 +138,14 @@ function jobsCount() {
       ? `${interviewList.length} of ${allCardLength} jobs`
       : activeTab === "rejected"
         ? `${rejectedList.length} of ${allCardLength} jobs`
-        : allCardSectionEle.children.length;
+        : allCardSectionEle.children.length + " jobs";
 }
 jobsCount();
 
 // render cards
 function cardRenders(cardList) {
   filteredCardEle.innerHTML = "";
-
+  debugger;
   // if cardList empty show blank ui
   if (cardList.length === 0) {
     emptyRenderer();
@@ -144,9 +154,8 @@ function cardRenders(cardList) {
 
   cardList.forEach((item) => {
     const div = document.createElement("div");
-    div.className = "mt-4 space-y-4";
+    div.className = "job-card sm:p-6 flex justify-between";
     div.innerHTML = `
-     <div class="sm:p-6 flex justify-between">
           <!-- left side -->
           <div class="job-card-content space-y-1.5">
             <h3
@@ -184,12 +193,11 @@ function cardRenders(cardList) {
           </div>
 
           <!-- right side -->
-          <div class="flex shrink-0 justify-end">
-            <span class="btn btn-circle text-black/60">
+          <div class="flex justify-end">
+            <button class="delete-btn btn btn-circle text-black/60">
               <i class="fa-regular fa-trash-can"></i>
-            </span>
+            </button>
           </div>
-        </div>
     `;
 
     filteredCardEle.appendChild(div);
@@ -199,10 +207,10 @@ function cardRenders(cardList) {
 // empty renderer
 function emptyRenderer() {
   const div = document.createElement("div");
-  div.className = "flex justify-center flex-col items-center py-15";
+  div.className = "flex justify-center items-center";
   div.innerHTML = `
    <!-- document icon  -->
-          <!--div class="flex flex-col items-center justify-center"-->
+          <div class="flex flex-col items-center justify-center py-10">
             <img src="./page.png" alt="it's present empty" />
             <p class="font-semibold mt-5 text-2xl/8 text-[#002C5C]">
               No jobs available
@@ -210,7 +218,32 @@ function emptyRenderer() {
             <p class="text-black/50">
               Check back soon for new job opportunities
             </p>
-          <!--/div-->
+          </div>
   `;
   filteredCardEle.appendChild(div);
+}
+
+// remove card from a list
+function removeCard(cardEle) {
+  const companyName = cardEle
+    .querySelector(".job-company-name")
+    .textContent.trim();
+  cardEle.remove();
+  //  delete card from list
+  if (activeTab === "interview") {
+    interviewList = interviewList.filter(
+      (item) => item.companyName !== companyName,
+    );
+    if (interviewList.length === 0) {
+      emptyRenderer(interviewList);
+    }
+  } else if (activeTab === "rejected") {
+    rejectedList = rejectedList.filter(
+      (item) => item.companyName !== companyName,
+    );
+    if (rejectedList.length === 0) {
+      emptyRenderer(rejectedList);
+    }
+  }
+  jobsCount();
 }

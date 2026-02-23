@@ -32,7 +32,7 @@
   </head>
   <body>
     <!-- header section -->
-    <header class="border-b-2 sm:border-b-3 border-black/10">
+    <header class="sticky top-0 bg-white shadow">
       <div class="p-3 sm:w-10/12 mx-auto">
         <h1 class="font-bold text-2xl sm:text-3xl leading-8 text-[#002C5C]">
           Job Application Tracker
@@ -69,14 +69,14 @@
       </div>
     </header>
     <!-- main section -->
-    <main class="p-4 sm:w-10/12 mx-auto">
+    <main class="sm:w-10/12 mx-auto">
       <!-- header -->
-      <div class="flex justify-between">
+      <div class="flex justify-between p-3 mt-2">
         <h2 class="text-[#002C5C]">Available Jobs</h2>
         <p id="available-jobs" class="text-black/50 font-medium">0 jobs</p>
       </div>
       <!-- toggle buttons -->
-      <div class="flex gap-3 mt-6" id="toggle-buttons">
+      <div class="flex gap-3 mt-2 p-3" id="toggle-buttons">
         <button data-id="all" class="btn text-black/50 px-7 button-active">
           All
         </button>
@@ -91,12 +91,15 @@
       <!-- Filtered cards -->
       <section
         id="filtered-card"
-        class="mt-4 space-y-4 hidden *:shadow *:pb-3"
+        class="p-3 mt-4 space-y-4 *:shadow *:pb-3 *:rounded-lg *:outline *:outline-black/8 *:p-3 hidden"
       ></section>
       <!-- all cards -->
-      <section id="allCard" class="mt-4 space-y-4 *:shadow *:pb-3">
+      <section
+        id="allCard"
+        class="p-3 mt-4 space-y-4 *:shadow *:pb-3 *:rounded-lg *:outline *:outline-black/8 *:p-3"
+      >
         <!-- card -->
-        <div class="sm:p-6 flex justify-between">
+        <div class="job-card sm:p-6 flex justify-between">
           <!-- left side -->
           <div class="job-card-content space-y-1.5">
             <h3
@@ -136,14 +139,14 @@
           </div>
 
           <!-- right side -->
-          <div class="flex shrink-0 justify-end">
-            <span class="delete-btn btn btn-circle text-black/60">
+          <div class="flex justify-end">
+            <button class="delete-btn btn btn-circle text-black/60">
               <i class="fa-regular fa-trash-can"></i>
-            </span>
+            </button>
           </div>
         </div>
         <!-- card -->
-        <div class="sm:p-6 flex justify-between">
+        <div class="job-card sm:p-6 flex justify-between">
           <!-- left side -->
           <div class="job-card-content space-y-1.5">
             <h3
@@ -182,14 +185,14 @@
           </div>
 
           <!-- right side -->
-          <div class="flex shrink-0 justify-end">
-            <span class="delete-btn btn btn-circle text-black/60">
+          <div class="flex justify-end">
+            <button class="delete-btn btn btn-circle text-black/60">
               <i class="fa-regular fa-trash-can"></i>
-            </span>
+            </button>
           </div>
         </div>
         <!-- card -->
-        <div class="sm:p-6 flex justify-between">
+        <div class="job-card sm:p-6 flex justify-between">
           <!-- left side -->
           <div class="job-card-content space-y-1.5">
             <h3
@@ -228,14 +231,14 @@
           </div>
 
           <!-- right side -->
-          <div class="flex shrink-0 justify-end">
-            <span class="delete-btn btn btn-circle text-black/60">
+          <div class="flex justify-end">
+            <button class="delete-btn btn btn-circle text-black/60">
               <i class="fa-regular fa-trash-can"></i>
-            </span>
+            </button>
           </div>
         </div>
         <!-- card -->
-        <div class="sm:p-6 flex justify-between">
+        <div class="job-card sm:p-6 flex justify-between">
           <!-- left side -->
           <div class="job-card-content space-y-1.5">
             <h3
@@ -274,14 +277,14 @@
           </div>
 
           <!-- right side -->
-          <div class="flex shrink-0 justify-end">
+          <div class="flex justify-end">
             <span class="delete-btn btn btn-circle text-black/60">
               <i class="fa-regular fa-trash-can"></i>
             </span>
           </div>
         </div>
         <!-- card -->
-        <div class="sm:p-6 flex justify-between">
+        <div class="job-card sm:p-6 flex justify-between">
           <!-- left side -->
           <div class="job-card-content space-y-1.5">
             <h3
@@ -321,14 +324,14 @@
           </div>
 
           <!-- right side -->
-          <div class="flex shrink-0 justify-end">
-            <span class="delete-btn btn btn-circle text-black/60">
+          <div class="flex justify-end">
+            <button class="delete-btn btn btn-circle text-black/60">
               <i class="fa-regular fa-trash-can"></i>
-            </span>
+            </button>
           </div>
         </div>
         <!-- card -->
-        <div class="sm:p-6 flex justify-between">
+        <div class="job-card sm:p-6 flex justify-between">
           <!-- left side -->
           <div class="job-card-content space-y-1.5">
             <h3
@@ -368,14 +371,14 @@
           </div>
 
           <!-- right side -->
-          <div class="flex shrink-0 justify-end">
-            <span class="delete-btn btn btn-circle text-black/60">
+          <div class="flex justify-end">
+            <button class="delete-btn btn btn-circle text-black/60">
               <i class="fa-regular fa-trash-can"></i>
-            </span>
+            </button>
           </div>
         </div>
         <!-- card -->
-        <div class="sm:p-6 flex justify-between">
+        <div class="job-card sm:p-6 flex justify-between">
           <!-- left side -->
           <div class="job-card-content space-y-1.5">
             <h3
@@ -415,14 +418,14 @@
           </div>
 
           <!-- right side -->
-          <div class="flex shrink-0 justify-end">
-            <span class="delete-btn btn btn-circle text-black/60">
+          <div class="flex justify-end">
+            <button class="delete-btn btn btn-circle text-black/60">
               <i class="fa-regular fa-trash-can"></i>
-            </span>
+            </button>
           </div>
         </div>
         <!-- card -->
-        <div class="sm:p-6 flex justify-between">
+        <div class="job-card sm:p-6 flex justify-between">
           <!-- left side -->
           <div class="job-card-content space-y-1.5">
             <h3
@@ -462,10 +465,10 @@
           </div>
 
           <!-- right side -->
-          <div class="flex shrink-0 justify-end">
-            <span class="delete-btn btn btn-circle text-black/60">
+          <div class="flex justify-end">
+            <button class="delete-btn btn btn-circle text-black/60">
               <i class="fa-regular fa-trash-can"></i>
-            </span>
+            </button>
           </div>
         </div>
       </section>
