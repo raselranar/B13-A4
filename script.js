@@ -103,7 +103,10 @@ function cardStateUpdate(e) {
     cardRenders(rejectedList);
   }
   // add card data to rejectedList
-  else if (targetEle.classList.contains("rejected-btn")) {
+  else if (
+    targetEle.classList.contains("rejected-btn") &&
+    activeTab !== "rejected"
+  ) {
     const jobExist = rejectedList.find(
       (item) => item.companyName === cardInfo.companyName,
     );
