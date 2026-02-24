@@ -148,7 +148,7 @@ jobsCount();
 // render cards
 function cardRenders(cardList) {
   filteredCardEle.innerHTML = "";
-  debugger;
+  
   // if cardList empty show blank ui
   if (cardList.length === 0) {
     emptyRenderer();
