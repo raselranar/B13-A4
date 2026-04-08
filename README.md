@@ -2,8 +2,9 @@
 
 A modern and responsive Job Application Tracker that helps users manage job applications efficiently. Users can track application status (Interview / Rejected), view job details, and manage their progress from a clean dashboard UI.
 
-🔗 Live Site: https://your-live-link.com  
-🔗 GitHub Repo: https://github.com/your-username/job-application-tracker  
+🔗 Live Site: https://raselranar.github.io/B13-A4/
+
+🔗 GitHub Repo: https://github.com/raselranar/B13-A4
 
 ---
 
@@ -71,6 +72,47 @@ npm run dev
 Then open:
 👉 http://localhost:5173
 ---
-🔗 Relevant Links
-🌐 Live Site: https://your-live-link.com
-💻 GitHub Repo: https://github.com/your-username/job-application-tracker
+## Functionalities
+
+- Clicking **Interview**
+    
+    - Adds job to Interview tab
+        
+    - Updates dashboard count
+        
+- Clicking **Rejected**
+    
+    - Adds job to Rejected tab
+        
+    - Updates dashboard count
+        
+- Toggle Feature
+    
+    - Switch between Interview ↔ Rejected
+        
+    - Updates UI and counts instantly
+        
+- Delete Feature
+    
+    - Removes job card
+        
+    - Updates dashboard + tab counts
+  ---
+  ## Responsive Design
+
+- Mobile Friendly ✅
+    
+- Tablet Support ✅
+    
+- Desktop Optimized ✅
+  
+  ---
+  ## Author
+
+**Rasel**  
+Frontend Developer (MERN Stack Learner)
+    
+        
+
+
+---
