@@ -21,8 +21,8 @@ The UI is fully responsive and works smoothly on both desktop and mobile devices
 ---
 
 ## 🖼️ Screenshot
+<img width="1428" height="677" alt="image" src="https://github.com/user-attachments/assets/839ec0cb-1e18-4989-81f3-dd2f0c403cda" />
 
-![Project Screenshot](./assets/screenshot.png)
 
 ---
 
