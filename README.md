@@ -2,9 +2,9 @@
 
 A modern and responsive Job Application Tracker that helps users manage job applications efficiently. Users can track application status (Interview / Rejected), view job details, and manage their progress from a clean dashboard UI.
 
-🔗 Live Site: https://raselranar.github.io/B13-A4/
+🔗 Live Site: https://raselranar.github.io/Job-Application-Tracker/
 
-🔗 GitHub Repo: https://github.com/raselranar/B13-A4
+🔗 GitHub Repo: https://github.com/raselranar/Job-Application-Tracker
 
 ---
 
