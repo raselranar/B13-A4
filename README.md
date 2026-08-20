@@ -58,7 +58,7 @@ tailwindcss
 ## How to Run Locally
 
 ### 1. Clone the repository
-git clone https://github.com/raselranar/B13-A4.git
+git clone https://github.com/raselranar/Job-Application-Tracker.git
 
 ### 2. Go to project folder
 cd job-application-tracker
